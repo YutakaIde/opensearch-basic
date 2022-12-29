@@ -11,8 +11,8 @@
 
 - コピー元で手動スナップショットを作成する
 
-  ```
-  curl -XPUT 'domain-endpoint/_snapshot/repository-name/snapshot-name'
+  ```kibana
+  PUT _snapshot/repository-name/snapshot-name
   ```
 
 ## クローン
@@ -21,20 +21,26 @@
 
   スナップショットの確認
 
-  ```
-  curl -XGET 'domain-endpoint/_snapshot/repository-name/_all?pretty'
+  ```kibana
+  GET _snapshot/repository-name/_all?pretty
   ```
 
   インデックスの削除
 
-  ```
-  curl -XDELETE 'domain-endpoint/_all'
+  ```kibana
+  DELETE _all
   ```
 
   スナップショットの復元
 
+  ```kibana
+  POST _snapshot/repository-name/snapshot-name/_restore
   ```
-  curl -XPOST 'domain-endpoint/_snapshot/repository-name/snapshot-name/_restore'
+
+  スナップショットの削除
+
+  ```kibana
+  DELETE _snapshot/repository-name/snapshot-name
   ```
 
 # リファレンス
